@@ -1,5 +1,5 @@
 ## Usage:  
-install and run aleo zk.work aleo prover in a fresh ubuntu22.04 server machine, the script will auto install nvidia drivers and cuda toolkit.
+install and run zk.work aleo prover in a fresh ubuntu22.04 server machine, the script will auto install nvidia drivers and cuda toolkit.
 the scirpt requires 3 parameters: zk.work version, server address, your aleo wallet address  
 after install, the machine will auto restart, then please goto zk.work website to check your running status  
 ```shell
