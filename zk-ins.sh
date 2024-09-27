@@ -1,4 +1,10 @@
 #!/bin/bash
+# if not root user, exit
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
 VER=$1
 POOL=$2
 ADDR=$3
