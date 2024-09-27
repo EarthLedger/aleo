@@ -23,9 +23,9 @@ if [ -z "$VER" ] || [ -z "$ADDR" ] || [ -z "$POOL" ] ; then
   exit 1
 fi
 
-wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v$VER/aleo_prover-v$VER_full.tar.gz
+wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v${VER}/aleo_prover-v${VER}_full.tar.gz
 
-tar -xvf aleo_prover-v$VER_full.tar.gz -C /opt
+tar -xvf aleo_prover-v${VER}_full.tar.gz -C /opt
 
 # geneate run/stop scripts
 echo "#!/bin/bash
