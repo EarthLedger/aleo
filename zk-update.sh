@@ -1,4 +1,11 @@
 #!/bin/bash
+
+# if not root user, exit
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
 VER=$1
 POOL=$2
 ADDR=$3
@@ -13,9 +20,9 @@ if [ -z "$VER" ] || [ -z "$ADDR" ] || [ -z "$POOL" ] || [ -z "$WORKER" ] ; then
   exit 1
 fi
 
-wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v$VER/aleo_prover-v$VER.tar.gz
+wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v$VER/aleo_prover-v$VER_full.tar.gz
 
-tar -xvf aleo_prover-v$VER.tar.gz -C /opt
+tar -xvf aleo_prover-v$VER_full.tar.gz -C /opt
 
 # geneate run/stop scripts
 echo "#!/bin/bash
