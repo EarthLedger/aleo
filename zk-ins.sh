@@ -2,14 +2,14 @@
 VER=$1
 POOL=$2
 ADDR=$3
-WORKER=$4
+WORKER=$(hostname -I | awk '{print $1}')
 
 echo "This script will install nvidia driver/CUDA and ZKWORK prover in your ubuntu system, and auto configure it to run on boot"
 
 # if no VER or ADDR quit
-if [ -z "$VER" ] || [ -z "$ADDR" ] || [ -z "$POOL" ] || [ -z "$WORKER" ] ; then
-  echo "Usage: $0 <zkwork-version> <pool> <receive-address> <worker-name>"
-  echo "Example: $0 0.2.2 aleo.hk.zk.work:10003 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3 myworker"
+if [ -z "$VER" ] || [ -z "$ADDR" ] || [ -z "$POOL" ] ; then
+  echo "Usage: $0 <zkwork-version> <pool> <receive-address>"
+  echo "Example: $0 0.2.2 aleo.hk.zk.work:10003 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3"
   exit 1
 fi
 
