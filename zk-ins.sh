@@ -23,7 +23,7 @@ dpkg -i cuda-keyring_1.1-1_all.deb
 apt-get update
 apt-get -y install cuda-toolkit-12-6
 
-wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v$VER/aleo_prover-v$VER.tar.gz
+wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v$VER/aleo_prover-v$VER_full.tar.gz
 
 tar -xvf aleo_prover-v$VER.tar.gz -C /opt
 
