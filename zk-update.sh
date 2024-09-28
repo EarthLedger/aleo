@@ -10,7 +10,7 @@ if [ "$EUID" -ne 0 ]
 fi
 
 VER=$1
-ADDR=$3
+ADDR=$2
 WORKER=$(hostname -I | awk '{print $1}')
 
 echo "This script will update ZKWORK prover in your ubuntu system, and auto configure it to run on boot"
