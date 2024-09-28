@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # example usage:
-# curl https://gh-proxy.com/https://raw.githubusercontent.com/EarthLedger/aleo/refs/heads/main/zk-update.sh | bash -s 0.2.2 aleo.hk.zk.work:10003 aleo14jy6z0h384m6tyqdlx6djflk6d0wp7fug4xqz05wp95ppqaqaygsgagv4t
+# curl https://gh-proxy.com/https://raw.githubusercontent.com/EarthLedger/aleo/refs/heads/main/zk-update.sh | bash -s 0.2.3 aleo14jy6z0h384m6tyqdlx6djflk6d0wp7fug4xqz05wp95ppqaqaygsgagv4t
 
 # if not root user, exit
 if [ "$EUID" -ne 0 ]
@@ -10,7 +10,6 @@ if [ "$EUID" -ne 0 ]
 fi
 
 VER=$1
-POOL=$2
 ADDR=$3
 WORKER=$(hostname -I | awk '{print $1}')
 
@@ -19,7 +18,7 @@ echo "This script will update ZKWORK prover in your ubuntu system, and auto conf
 # if no VER or ADDR quit
 if [ -z "$VER" ] || [ -z "$ADDR" ] || [ -z "$POOL" ] ; then
   echo "Usage: $0 <zkwork-version> <pool> <receive-address>"
-  echo "Example: $0 0.2.2 aleo.hk.zk.work:10003 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3"
+  echo "Example: $0 0.2.3 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3"
   exit 1
 fi
 
@@ -30,7 +29,7 @@ tar -xvf aleo_prover-v${VER}_full.tar.gz -C /opt
 # geneate run/stop scripts
 echo "#!/bin/bash
 cd /opt/aleo_prover
-./aleo_prover --address $ADDR --pool $POOL --custom_name $WORKER >> prover.log 2>&1
+./aleo_prover --address $ADDR --pool aleo.asia1.zk.work:10003 --pool aleo.hk.zk.work:10003 --pool aleo.jp.zk.work:10003 --custom_name $WORKER >> prover.log 2>&1
 echo \$! > aleo_prover.pid
 " > /opt/aleo_prover/start.sh
 chmod +x /opt/aleo_prover/start.sh
