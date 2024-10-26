@@ -66,6 +66,6 @@ WantedBy=multi-user.target
 
 systemctl daemon-reload
 systemctl enable aleo.service
-reboot
+systemctl --force --force reboot
 
 
