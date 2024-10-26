@@ -20,6 +20,8 @@ fi
 
 echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && DEBIAN_FRONTEND=noninteractive apt install libc6 -y && apt install -y g++-11
 
+apt-get -y install --only-upgrade ubuntu-drivers-common
+
 ubuntu-drivers install
 
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
@@ -28,7 +30,7 @@ dpkg -i cuda-keyring_1.1-1_all.deb
 apt-get update
 apt-get -y install cuda-toolkit-12-6
 
-wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v${VER}/aleo_prover-v${VER}_full.tar.gz
+wget  https://ghp.ci/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v${VER}/aleo_prover-v${VER}_full.tar.gz
 
 tar -xvf aleo_prover-v${VER}_full.tar.gz -C /opt
 
