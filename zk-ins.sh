@@ -20,8 +20,8 @@ fi
 
 echo "deb http://cz.archive.ubuntu.com/ubuntu jammy main" >> /etc/apt/sources.list && apt update && DEBIAN_FRONTEND=noninteractive apt install libc6 -y && apt install -y g++-11
 
-apt-get -y install --only-upgrade ubuntu-drivers-common
 apt-get -y install ubuntu-drivers-common
+apt-get -y install --only-upgrade ubuntu-drivers-common
 
 ubuntu-drivers install
 
