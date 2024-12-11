@@ -9,8 +9,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-VER=$1
-ADDR=$2
+VER=0.2.5
+ADDR=$1
 WORKER=$(hostname -I | awk '{print $1}')
 
 echo "This script will update ZKWORK prover in your ubuntu system, and auto configure it to run on boot"
@@ -22,7 +22,7 @@ if [ -z "$VER" ] || [ -z "$ADDR" ] ; then
   exit 1
 fi
 
-wget https://gh-proxy.com/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v${VER}/aleo_prover-v${VER}_full.tar.gz
+wget -O aleo_prover-v${VER}_full.tar.gz https://gh-proxy.com/https://ghp.ci/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/cuda-v0.2.5-hotfix2/aleo_prover-v0.2.5_cuda_full_hotfix2.tar.gz
 
 tar -xvf aleo_prover-v${VER}_full.tar.gz -C /opt
 

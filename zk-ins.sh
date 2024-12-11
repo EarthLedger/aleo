@@ -5,16 +5,16 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-VER=$1
-ADDR=$2
+VER=0.2.5
+ADDR=$1
 WORKER=$(hostname -I | awk '{print $1}')
 
 echo "This script will install nvidia driver/CUDA and ZKWORK prover in your ubuntu system, and auto configure it to run on boot"
 
 # if no VER or ADDR quit
 if [ -z "$VER" ] || [ -z "$ADDR" ] ; then
-  echo "Usage: $0 <zkwork-version> <receive-address>"
-  echo "Example: $0 0.2.3 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3"
+  echo "Usage: $0 <receive-address>"
+  echo "Example: $0 aleo1spkkxewxj2dl2lgdps9xr28093p5nxsvjv55g2unmqfu0hmwyuysmf4qp3"
   exit 1
 fi
 
@@ -31,7 +31,7 @@ dpkg -i cuda-keyring_1.1-1_all.deb
 apt-get update
 apt-get -y install cuda-toolkit-12-6
 
-wget  https://ghp.ci/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/v${VER}/aleo_prover-v${VER}_full.tar.gz
+wget -O aleo_prover-v${VER}_full.tar.gz https://ghp.ci/https://github.com/6block/zkwork_aleo_gpu_worker/releases/download/cuda-v0.2.5-hotfix2/aleo_prover-v0.2.5_cuda_full_hotfix2.tar.gz
 
 tar -xvf aleo_prover-v${VER}_full.tar.gz -C /opt
 
